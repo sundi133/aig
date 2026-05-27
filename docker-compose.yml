@@ -1,0 +1,30 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    image: aig-backend:dev
+    environment:
+      AIG_ISSUER: http://localhost:8080
+      AIG_ADMIN_TOKENS: admin-dev-token
+      AIG_CORS_ORIGINS: http://localhost:3000
+    ports:
+      - "8080:8080"
+    volumes:
+      - aig-data:/app/data
+      - aig-keys:/app/keys
+
+  dashboard:
+    build:
+      context: ./dashboard
+    image: aig-dashboard:dev
+    environment:
+      AIG_BACKEND_URL: http://backend:8080
+      AIG_ADMIN_TOKEN: admin-dev-token
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  aig-data:
+  aig-keys:

@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Local DB and keys
+backend/aig.db
+backend/aig-*.db
+backend/keys/
+backend/data/
+
+# Node
+node_modules/
+.next/
+dist/
+out/
+
+# Editor
+.idea/
+.vscode/
+.env
+.env.local
